@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'views/column_view.dart';
+import 'views/task_details.dart'; // ignore warning for debugging
+import 'views/task_view.dart'; // ignore warning for debugging
+
+// IMPORTANT: Change the home: paramater in main.dart to switch screens!
 
 void main() {
   runApp(MyApp());
@@ -14,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Project Rain', //Seems to only be used in mobile (Android).
       theme: ThemeData(appBarTheme: AppBarTheme(toolbarHeight: 100)),
-      home: ColumnView(), //Home Screen
+      home: ColumnView(), //CHANGE THIS FOR DEBUGGING (ColumnView / TaskDetails)
     );
   }
 }
