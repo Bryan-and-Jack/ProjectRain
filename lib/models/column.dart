@@ -29,10 +29,10 @@ class ColumnModel {
   }
 }
 
-class ColumnModelView {
+class ColumnViewModel {
   final ColumnModel _columnModel;
 
-  ColumnModelView(this._columnModel);
+  ColumnViewModel(this._columnModel);
 
   List<TaskModel> get tasks => _columnModel._tasks;
   List<TaskModel> taskList() => tasks;
