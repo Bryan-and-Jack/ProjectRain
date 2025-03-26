@@ -1,15 +1,13 @@
 import 'dart:developer';
+
 import 'task.dart';
 
-/// Should only contain raw data, and not unusal types.
-/// getters and setter are built in (known properties)
 class ColumnModel {
-  int? id;
-  String name = "New Column";
+  ColumnModel({required this.ID, required this.name, required this.index});
+  int? ID;
   int? index;
+  String name = "New Column";
   final List<TaskModel> _tasks = [];
-
-  ColumnModel({required this.id, required this.name, required this.index});
 
   void _add(TaskModel newTask) {
     _tasks.add(newTask);
@@ -19,7 +17,6 @@ class ColumnModel {
     _tasks.remove(newTask);
   }
 
-  // Function belongs in Model, they only deal with raw data operations.
   void _updateName(String newName) {
     name = newName;
   }
@@ -34,26 +31,26 @@ class ColumnViewModel {
 
   ColumnViewModel(this._columnModel);
 
-  List<TaskModel> get tasks => _columnModel._tasks;
-  List<TaskModel> taskList() => tasks;
+  List<TaskModel> get retriveTasks => _columnModel._tasks;
+  List<TaskModel> tasks() => retriveTasks;
 
   void onAdd(TaskModel newTask) {
     _columnModel._add(newTask);
     log("$newTask.name added");
   }
 
-  void onRemove(TaskModel newTask) {
-    _columnModel._remove(newTask);
-    log("$newTask.name deleted");
+  void onRemove(TaskModel task) {
+    _columnModel._remove(task);
+    log("$task.name deleted");
   }
 
   void onUpdateName(String newName) {
     _columnModel._updateName(newName);
-    log("Name updated");
+    log("Name updated: $newName.name");
   }
 
   void onUpdateIndex(int newIndex) {
     _columnModel._updateIndex(newIndex);
-    log("Index updated");
+    log("Index updated: $newIndex.name");
   }
 }

@@ -9,10 +9,10 @@ const String _taskDescription =
 class TaskDetails extends StatefulWidget {
   const TaskDetails({super.key});
   @override
-  _BoardViewState createState() => _BoardViewState();
+  BoardViewState createState() => BoardViewState();
 }
 
-class _BoardViewState extends State<TaskDetails> {
+class BoardViewState extends State<TaskDetails> {
   String title = "Project Rain";
 
   @override

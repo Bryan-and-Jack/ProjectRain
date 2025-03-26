@@ -3,14 +3,17 @@ import 'dart:developer';
 import 'column.dart';
 
 /// Concerns data operations and intialisations only.
+/// It should only contain raw data, and not unusal types.
+/// getters and setter are built in (known properties)
 class BoardModel {
   final List<ColumnModel> _columns = [];
 
-  void _addColumn(ColumnModel newColumn) {
+  // Function belongs in Model, they only deal with raw data operations.
+  void _add(ColumnModel newColumn) {
     _columns.add(newColumn);
   }
 
-  void _removeColumn(ColumnModel newColumn) {
+  void _remove(ColumnModel newColumn) {
     _columns.remove(newColumn);
   }
 }
@@ -21,17 +24,16 @@ class BoardViewModel {
 
   BoardViewModel(this._boardModel);
 
-  List<ColumnModel> get columns => _boardModel._columns;
+  List<ColumnModel> get retriveColumns => _boardModel._columns;
+  List<ColumnModel> columns() => retriveColumns;
 
-  List<ColumnModel> getColumnListItems() => columns;
-
-  void onAddColumn(ColumnModel newColumn) {
-    _boardModel._addColumn(newColumn);
+  void onAdd(ColumnModel newColumn) {
+    _boardModel._add(newColumn);
     log("Added new Column: $newColumn.name");
   }
 
-  void onRemoveColumn(ColumnModel newColumn) {
-    _boardModel._removeColumn(newColumn);
-    log("Removed Column: $newColumn.name");
+  void onRemove(ColumnModel column) {
+    _boardModel._remove(column);
+    log("Removed Column: $column.name");
   }
 }

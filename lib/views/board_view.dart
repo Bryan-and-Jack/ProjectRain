@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class BoardView extends StatefulWidget {
+  const BoardView({super.key});
+
   @override
-  _BoardViewState createState() => _BoardViewState();
+  BoardViewState createState() => BoardViewState();
 }
 
-class _BoardViewState extends State<BoardView> {
+class BoardViewState extends State<BoardView> {
   String title = "Project Rain";
 
   var list = [

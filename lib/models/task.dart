@@ -1,43 +1,41 @@
+import "dart:developer";
+
 import "column.dart";
 import "tag.dart";
 
-/// Concerns data operations and intialisations only.
 class TaskModel {
-  TaskModel({
-    required this.id,
-    required this.taskName,
-    required this.indexOfTask,
-  });
-  int? id;
-  int? indexOfTask;
+  TaskModel({required this.ID, required this.taskName, required this.index});
+  int? ID;
+  int? index;
   String taskName = "New Task";
   String taskDescription = "Description";
   ColumnViewModel? columnParent;
-  final List<Tag> _taskTags = [];
+  final List<Tag> _tags = [];
 
   void _add(Tag newTag) {
-    _taskTags.add(newTag);
+    _tags.add(newTag);
   }
 
   void _remove(Tag tag) {
-    _taskTags.remove(tag);
+    _tags.remove(tag);
   }
 }
 
-/// Acts as the mediator between the Model and the View, extends functions.
 class TaskViewModel {
   final TaskModel _taskModel;
 
   TaskViewModel(this._taskModel);
 
-  List<Tag> get taskTags => _taskModel._taskTags;
-  List<Tag> getTaskTagsItems() => taskTags;
+  List<Tag> get retriveTags => _taskModel._tags;
+  List<Tag> tags() => retriveTags;
 
-  void onAddTask(Tag newTag) {
+  void onAdd(Tag newTag) {
     _taskModel._add(newTag);
+    log("$newTag.name added");
   }
 
-  void onRemoveTask(Tag tag) {
+  void onRemove(Tag tag) {
     _taskModel._remove(tag);
+    log("$tag.name removed");
   }
 }

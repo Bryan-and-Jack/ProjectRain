@@ -9,10 +9,10 @@ const double _taskVerticalSpacing = 5;
 class ColumnView extends StatefulWidget {
   const ColumnView({super.key});
   @override
-  _BoardViewState createState() => _BoardViewState();
+  BoardViewState createState() => BoardViewState();
 }
 
-class _BoardViewState extends State<ColumnView> {
+class BoardViewState extends State<ColumnView> {
   String title = "Project Rain";
 
   var tasks = ["Task 1", "Task 2", "Task 3"];
