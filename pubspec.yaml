@@ -1,5 +1,5 @@
 name: project_rain
-description: "A new Flutter project."
+description: "Kanban Planning tool"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -34,10 +34,14 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  flutter_localizations:
+    sdk: flutter
+  intl: any
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  intl_utils: ^2.5.0 # Automatic Generation of localisation methods.
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -49,8 +53,17 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
+
+# Localization as known as i10n.yaml
+arb-dir: lib/lang # Renamed from l10n for better readability.
+output-dir: lib/lang/generated
+synthetic-package: false
+template-arb-file: app_en.arb
+output-localization-file: app_localizations.dart
+
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true 
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
