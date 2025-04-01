@@ -2,14 +2,15 @@ import "dart:developer";
 
 import "column.dart";
 import "tag.dart";
+import 'package:get/get.dart';
 
 class TaskModel {
   TaskModel({required this.ID, required this.taskName, required this.index});
   int? ID;
   int? index;
-  String taskName = "New Task";
+  RxString taskName = "New Task".obs;
   String taskDescription = "Description";
-  ColumnViewModel? columnParent;
+  GroupViewModel? columnParent;
   final List<Tag> _tags = [];
 
   void _add(Tag newTag) {

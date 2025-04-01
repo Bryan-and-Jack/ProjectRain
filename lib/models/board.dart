@@ -6,14 +6,14 @@ import 'column.dart';
 /// It should only contain raw data, and not unusal types.
 /// getters and setter are built in (known properties)
 class BoardModel {
-  final List<ColumnModel> _columns = [];
+  final List<GroupModel> _columns = [];
 
   // Function belongs in Model, they only deal with raw data operations.
-  void _add(ColumnModel newColumn) {
+  void _add(GroupModel newColumn) {
     _columns.add(newColumn);
   }
 
-  void _remove(ColumnModel newColumn) {
+  void _remove(GroupModel newColumn) {
     _columns.remove(newColumn);
   }
 }
@@ -24,15 +24,15 @@ class BoardViewModel {
 
   BoardViewModel(this._boardModel);
 
-  List<ColumnModel> get retriveColumns => _boardModel._columns;
-  List<ColumnModel> columns() => retriveColumns;
+  List<GroupModel> get retrieveColumns => _boardModel._columns;
+  List<GroupModel> columns() => retrieveColumns;
 
-  void onAdd(ColumnModel newColumn) {
+  void onAdd(GroupModel newColumn) {
     _boardModel._add(newColumn);
     log("Added new Column: $newColumn.name");
   }
 
-  void onRemove(ColumnModel column) {
+  void onRemove(GroupModel column) {
     _boardModel._remove(column);
     log("Removed Column: $column.name");
   }

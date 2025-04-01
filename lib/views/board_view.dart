@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project_rain/models/column.dart';
+import '../views/column_view.dart';
+import 'package:get/get.dart';
 
 class BoardView extends StatefulWidget {
   const BoardView({super.key});
@@ -8,23 +11,16 @@ class BoardView extends StatefulWidget {
 }
 
 class BoardViewState extends State<BoardView> {
+  // Provisional variables
   String title = "Project Rain";
-
-  var list = [
-    "To-Do",
-    "In-Progress",
-    "Done",
-    "Column 4",
-    "Column 5",
-    "Column 6",
-  ];
+  int delimiter = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Title of the Project',
+          title,
           style: TextStyle(fontSize: 35, fontWeight: FontWeight.w600),
         ),
       ),
@@ -37,19 +33,25 @@ class BoardViewState extends State<BoardView> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                for (var i = 0; i < list.length; i++)
+                for (var i = 0; i < delimiter; i++)
                   Padding(
                     padding:
-                        i == list.length - 1
+                        i == delimiter - 1
                             ? EdgeInsets.zero
                             : EdgeInsets.only(right: 67),
                     child: Container(
                       color: Colors.grey,
                       width: 420,
-                      // Column for reference, will be removed
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [Text(list[i])],
+                      child: Group(
+                        // title: 'My Column'.obs,
+                        taskWidth: 420,
+                        taskHeight: 35,
+                        verticalGap: 8,
+                        group: GroupModel(
+                          ID: 1,
+                          name: 'The Group'.obs,
+                          index: 1.obs,
+                        ),
                       ),
                     ),
                   ),
