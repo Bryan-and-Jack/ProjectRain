@@ -1,4 +1,5 @@
 import "dart:developer";
+import "package:get/get.dart";
 
 import "column.dart";
 import "tag.dart";
@@ -18,6 +19,14 @@ class TaskModel {
 
   void _remove(Tag tag) {
     _tags.remove(tag);
+  }
+}
+
+class TaskDetailsController extends GetxController {
+  var isEnabled = false.obs;
+
+  void toggleDetails() {
+    isEnabled.value = !isEnabled.value;
   }
 }
 

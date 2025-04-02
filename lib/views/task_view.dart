@@ -1,12 +1,14 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-const double _taskVerticalSpacing = 5;
+import 'package:project_rain/models/task.dart';
 
 class ListedTask extends StatelessWidget {
   ListedTask({super.key});
-  final String title = "Project Rain";
-  final tasks = ["Task 1", "Task 2", "Task 3"];
+
+  final TaskDetailsController detailsController = Get.put(
+    TaskDetailsController(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +17,10 @@ class ListedTask extends StatelessWidget {
       width: double.infinity,
       child: GestureDetector(
         onTap: () {
-          log("sup");
+          detailsController.toggleDetails();
         },
         child: Card(
-          margin: EdgeInsets.only(
-            top: _taskVerticalSpacing,
-            bottom: _taskVerticalSpacing,
-            left: 30,
-            right: 30,
-          ),
+          margin: EdgeInsets.only(top: 5, bottom: 5, left: 30, right: 30),
           color: const Color.fromARGB(255, 255, 255, 255),
           child: Row(
             children: [
@@ -31,7 +28,7 @@ class ListedTask extends StatelessWidget {
                 padding: EdgeInsets.only(right: 15),
                 child: Icon(Icons.drag_indicator),
               ),
-              Text("ht"),
+              Text("New Task"),
               Spacer(),
               ClipRRect(
                 borderRadius: BorderRadius.only(
